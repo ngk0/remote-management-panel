@@ -15,14 +15,15 @@ Provisioning and live-appliance hardening remain separate projects.
 ## Publication status
 
 The alpha source was pushed to the public canonical repository on 2026-08-16.
-Its first Python 3.11/3.14 CI, CodeQL, and full-history secret-scan runs passed.
-Main-branch protection requires those checks, private vulnerability reporting
-and push protection are enabled, and the initial source remains a draft pull
-request pending maintainer acceptance.
+Its Python 3.11 and 3.14 continuous-integration runs, CodeQL security analysis,
+and full-history secret scans passed. Main-branch protection requires those
+checks, private vulnerability reporting and push protection are enabled, and
+the initial source is subject to the same protected pull-request workflow.
 
 ## Reviewed in this tree
 
-- Core/UI/Linux/simulation boundaries and background status collection.
+- Core, user-interface, Linux, and simulation boundaries plus background status
+  collection.
 - Black 320x240 layout and left rail aligned to the four physical buttons.
 - Unknown provider/action rejection and disabled-by-default privileged actions.
 - Bounded command and cloudflared-metrics reads.
@@ -41,18 +42,19 @@ The 2026-08-16 clean-tree validation completed with:
 - wheel and source-distribution builds, dependency audit, and dependency
   consistency checks passing;
 - a wheel install plus profile, configuration, and 320x240 simulator smoke test
-  passing on Raspberry Pi OS `armhf` with Python 3.11; and
+  passing on 32-bit Raspberry Pi OS with Python 3.11; and
 - independent Gitleaks and TruffleHog scans of the 84-file curated publication
   tree reporting no secrets.
 
 This is partial release evidence, not a production qualification. The live
-`armhf` smoke test could not exercise the service-owned framebuffer, and no
-`arm64` hardware target was available.
+32-bit smoke test could not exercise the service-owned framebuffer, and no
+64-bit hardware target was available.
 
 ## Required before a production release
 
-- Smoke-test the public package on supported armhf and arm64 Raspberry Pi OS
-  images, including framebuffer, all four buttons, touch hotplug, and clean boot.
+- Smoke-test the public package on supported 32-bit and 64-bit Raspberry Pi OS
+  images, including the display framebuffer, all four buttons, touch hotplug,
+  and clean boot.
 - Validate systemd sandbox directives on every supported systemd version.
 - Implement and separately review the privileged broker and destructive-action
   confirmation protocol; keep controls disabled until then.

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 320 240" role="img" aria-labelledby="title desc">
-  <title id="title">Synthetic PiTFT OOB Panel home screen</title>
+  <title id="title">Synthetic Remote Management Panel home screen</title>
   <desc id="desc">A black 320 by 240 panel with four left-aligned hardware button labels and synthetic status rows.</desc>
   <rect width="320" height="240" fill="#000000"/>
   <rect x="0" y="0" width="62" height="240" fill="#000000"/>
@@ -17,7 +17,7 @@
     <line x1="55" y1="194" x2="61" y2="194"/>
   </g>
   <rect x="64" y="0" width="256" height="33" fill="#081014"/>
-  <text x="72" y="23" fill="#eff7f8" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="bold">OOB Panel</text>
+  <text x="72" y="23" fill="#eff7f8" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="bold">Remote Panel</text>
   <text x="309" y="20" fill="#97aeb5" font-family="DejaVu Sans, sans-serif" font-size="13" text-anchor="end">12:34</text>
   <rect x="64" y="33" width="256" height="51" fill="#163e47"/>
   <rect x="64" y="33" width="5" height="51" fill="#62d2e3"/>

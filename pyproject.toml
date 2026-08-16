@@ -5,12 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "pitft-oob-panel"
 version = "0.1.0a1"
-description = "A local-first PiTFT status and control panel for Raspberry Pi out-of-band appliances"
+description = "A touchscreen dashboard for Raspberry Pi remote management appliances"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-authors = [{ name = "PiTFT OOB Panel contributors" }]
+authors = [{ name = "Remote Management Panel contributors" }]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console :: Framebuffer",
@@ -22,10 +22,10 @@ classifiers = [
 dependencies = ["Pillow>=9.2"]
 
 [project.urls]
-Homepage = "https://github.com/ngk0/pitft-oob-panel"
-Documentation = "https://github.com/ngk0/pitft-oob-panel/tree/main/docs"
-Issues = "https://github.com/ngk0/pitft-oob-panel/issues"
-Source = "https://github.com/ngk0/pitft-oob-panel"
+Homepage = "https://github.com/ngk0/remote-management-panel"
+Documentation = "https://github.com/ngk0/remote-management-panel/tree/main/docs"
+Issues = "https://github.com/ngk0/remote-management-panel/issues"
+Source = "https://github.com/ngk0/remote-management-panel"
 
 [project.optional-dependencies]
 hardware = ["evdev>=1.6; platform_system == 'Linux'"]

@@ -6,6 +6,9 @@ All notable changes are documented here. The project follows Semantic Versioning
 
 ### Added
 
+- Clear public name, search-friendly project summary, and plain-language
+  documentation for Raspberry Pi remote management users.
+
 - Clean-room modular scaffold.
 - PiTFT Plus 2.8-inch rotation-270 hardware profile and left-side button rail.
 - Typed observations, simulator, Linux adapters, provider interfaces, and tests.

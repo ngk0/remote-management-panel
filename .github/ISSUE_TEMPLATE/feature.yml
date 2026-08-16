@@ -14,7 +14,7 @@ body:
     id: boundary
     attributes:
       label: Primary boundary
-      options: [Core model, Provider, UI, Linux adapter, Simulator, Hardware profile, Privileged action]
+      options: [Core model, Status provider, User interface, Linux adapter, Simulator, Hardware profile, Privileged action]
     validations:
       required: true
   - type: textarea

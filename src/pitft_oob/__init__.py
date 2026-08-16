@@ -1,4 +1,4 @@
-"""PiTFT OOB Panel public package."""
+"""Remote Management Panel public package."""
 
 from pitft_oob.models import Health, Observation, Snapshot
 

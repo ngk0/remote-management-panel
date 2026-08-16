@@ -13,7 +13,7 @@
 ## Quality and security
 
 - [ ] Unit, parser-contract, controller, layout, and render tests pass.
-- [ ] armhf and arm64 hardware smoke tests pass on supported Raspberry Pi OS images.
+- [ ] 32-bit and 64-bit hardware smoke tests pass on supported Raspberry Pi OS images.
 - [ ] Ruff lint/format, mypy, ShellCheck, dependency audit, CodeQL, and workflow lint pass.
 - [ ] Third-party GitHub Actions are pinned to reviewed commit SHAs.
 - [ ] Threat model and security contact are current.

@@ -2,7 +2,7 @@
 
 ## Assets
 
-- Availability of the out-of-band appliance and its outbound management tunnel.
+- Availability of the remote management appliance and its outbound tunnel.
 - Integrity of local network and service controls.
 - Tunnel enrollment material, SSH keys, Wi-Fi credentials, and site topology.
 - Operator confidence in status freshness and action outcomes.
@@ -10,9 +10,11 @@
 
 ## Trust boundaries
 
-1. Physical button and resistive-touch events enter the unprivileged UI.
+1. Physical button and resistive-touch events enter the unprivileged user
+   interface.
 2. Providers read operating-system state and local metrics.
-3. The UI requests an enumerated action from a future privileged broker.
+3. The user interface requests an enumerated action from a future privileged
+   broker.
 4. The SSH administration account is separate from the locked panel identity.
 5. Public source, CI logs, screenshots, and issues are untrusted disclosure surfaces.
 
@@ -28,9 +30,9 @@
 | Misleading cached status | `observed_at`, TTL, `UNKNOWN`, and explicit stale rendering |
 | Device disappearance crashes service | Input rediscovery and isolated adapter errors |
 | Public artifact exposes topology | Documentation-range addresses and synthetic identifiers only |
-| Tunnel starts on the wrong physical LAN | Tunnel lifecycle stays outside panel startup; bench procedure defaults it off |
-| Authorized remote shell pivots into attached LAN | Least-privilege Access/SSH policy; site-only activation; operator route audit |
-| Reused private subnet reaches the wrong site | No bench private routes; explicit virtual-network isolation or renumbering |
+| Tunnel starts on the wrong physical network | Tunnel lifecycle stays outside panel startup; bench procedure defaults it off |
+| Authorized remote shell pivots into attached network | Least-privilege Access and SSH policy; site-only activation; operator route audit |
+| Reused private network range reaches the wrong site | No bench private routes; explicit virtual-network isolation or renumbering |
 
 ## Out of scope
 

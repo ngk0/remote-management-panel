@@ -14,9 +14,10 @@ pitft-oob-panel show-profile
 
 ## Bench network safety
 
-An outbound tunnel does not automatically bridge two LANs, but it is still a
-remote entry point. An authorized SSH user can originate traffic from the Pi to
-the currently attached LAN even if `/proc/sys/net/ipv4/ip_forward` is `0`.
+An outbound tunnel does not automatically bridge two local networks, but it is
+still a remote entry point. An authorized SSH user can originate traffic from
+the Pi to the currently attached network even if
+`/proc/sys/net/ipv4/ip_forward` is `0`.
 Therefore the safe default on a home, staging, repair, or other temporary network
 is a stopped and disabled tunnel:
 
@@ -30,13 +31,14 @@ Before enabling the tunnel at its destination:
 1. Confirm every published application targets only the intended service; an
    SSH route should normally target loopback, not a subnet address.
 2. Confirm the final unmatched ingress rule rejects traffic.
-3. Confirm WARP/private-network routing is disabled unless explicitly designed,
-   and audit every attached CIDR route in the provider control plane.
-4. Confirm Access policy, device posture where applicable, and SSH authorized
-   keys grant only the intended operators.
-5. If sites reuse an RFC 1918 range, use distinct routing domains/virtual
-   networks or renumber them. Never let route selection depend on which physical
-   LAN happens to be connected.
+3. Confirm Cloudflare WARP and private-network routing are disabled unless
+   explicitly designed, and audit every attached network range in the provider
+   control plane.
+4. Confirm Cloudflare Access policy, device posture where applicable, and SSH
+   authorized keys grant only the intended operators.
+5. If sites reuse the same private address range, use distinct routing domains
+   or virtual networks, or renumber them. Never let route selection depend on
+   which physical network happens to be connected.
 
 Only after that review should an operator run:
 
@@ -45,7 +47,7 @@ sudo systemctl enable --now cloudflared.service
 ```
 
 Cloudflare distinguishes a published service such as `ssh://localhost:22` from
-[private IP/CIDR routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/),
+[private network routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/),
 and documents [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
 for overlapping address space. This repository configures neither feature.
 
@@ -59,7 +61,7 @@ The unit is enabled through `con2fbmap.service.wants` and ordered after that
 service. It is deliberately not wanted by `multi-user.target`, which avoids the
 ordering cycle present when `con2fbmap` itself is after that target. The panel is
 not ordered before or required by the management tunnel; losing the display must
-not take the OOB path down.
+not take the remote management path down.
 
 The alpha service exposes status only. Privileged controls require the future
 broker and are not enabled by the packaging scaffold.

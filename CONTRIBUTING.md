@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping improve PiTFT OOB Panel.
+Thank you for helping improve Remote Management Panel.
 
 ## Before opening a change
 

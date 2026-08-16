@@ -1,44 +1,51 @@
-# PiTFT OOB Panel
+# Remote Management Panel
 
-PiTFT OOB Panel is a local-first, black-background status interface and guarded
-control-plane architecture for Raspberry Pi out-of-band management appliances.
-It targets the Adafruit PiTFT Plus 2.8-inch resistive display while keeping
-hardware, status providers, navigation, rendering, and privileged actions
-separate.
+[![Continuous integration](https://github.com/ngk0/remote-management-panel/actions/workflows/ci.yml/badge.svg)](https://github.com/ngk0/remote-management-panel/actions/workflows/ci.yml)
+[![Security analysis](https://github.com/ngk0/remote-management-panel/actions/workflows/codeql.yml/badge.svg)](https://github.com/ngk0/remote-management-panel/actions/workflows/codeql.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](CHANGELOG.md)
 
-![Synthetic simulator preview](docs/assets/simulator-home.svg)
+Turn a Raspberry Pi and an Adafruit PiTFT into an always-visible dashboard for
+remote infrastructure. Check the network, Cloudflare Tunnel, system health, and
+local services at a glance, then navigate with the touchscreen or four physical
+buttons.
 
-This repository contains no tunnel credentials, SSH keys, site hostnames,
-addresses, SSIDs, or captures from a deployed appliance. Tunnel provisioning is
-deliberately outside the project.
+![Remote Management Panel simulator preview](docs/assets/simulator-home.svg)
 
-## Current scope
+Remote management is also known as **out-of-band** or **lights-out management**:
+it gives operators an independent way to understand and recover equipment when
+the primary servers are unavailable. This project focuses on the local display
+and its security boundaries. It does not store tunnel credentials or configure
+remote access.
 
-- 320x240 black-theme interface with a left-side rail aligned to the four HAT buttons.
-- Paged status menu whose touch hitboxes and physical-button selection share one layout.
-- Built-in PiTFT Plus 2.8-inch rotation-270 hardware profile.
-- Immutable, typed status observations with explicit health and freshness.
-- Separate controller, renderer, Linux adapters, providers, and safe action catalog.
-- A simulator that renders synthetic data without Raspberry Pi hardware.
-- Privileged controls disabled by default; no arbitrary shell commands or
-  plugin-provided privileged commands.
+> [!IMPORTANT]
+> This is alpha software. The simulator and status-only interface are ready for
+> development and evaluation; the Raspberry Pi service package and privileged
+> controls are not yet production-supported.
 
-The project is alpha software. Treat the display as an operational aid, not the
-sole source of truth for service health.
+## What you get
 
-## Network safety
+- A readable 320x240 black theme designed for the Adafruit PiTFT Plus 2.8-inch
+  resistive touchscreen.
+- A left-side menu aligned with the display board's four physical buttons.
+- Pages for Cloudflare Tunnel, wired and wireless networking, Raspberry Pi
+  health, and local services.
+- Safe, honest status: failed or stale checks display `UNKNOWN` instead of
+  looking healthy.
+- A desktop simulator with synthetic data, so contributors do not need the
+  display hardware.
+- Separate modules for hardware input, status collection, navigation, rendering,
+  and guarded administrative actions.
+- Privileged controls disabled by default, with no support for configured shell
+  commands or plug-in supplied root commands.
 
-This project observes `cloudflared`; it does not provision or authorize a
-tunnel. An outbound tunnel is still a remote-access path. In particular, an
-authorized SSH session can originate connections from the appliance even when
-kernel IP forwarding is disabled.
+The first hardware profile supports the Adafruit PiTFT Plus 2.8-inch resistive
+display in landscape orientation. The architecture is ready for additional
+displays and status sources without coupling them to the screen renderer.
 
-Keep the tunnel stopped while the appliance is on a temporary, home, staging,
-or otherwise unintended LAN. Before enabling it at the destination, audit its
-published applications, private CIDR routes, WARP routing, Access policy, and
-SSH keys. See the [bench-network procedure](docs/operations.md#bench-network-safety).
+## Try it without a Raspberry Pi
 
-## Quick start: simulator
+Python 3.11 or newer is required.
 
 ```bash
 python -m venv .venv
@@ -47,30 +54,51 @@ python -m pip install -e .
 pitft-oob-panel simulate --output panel.png
 ```
 
-On Windows, activate with `.venv\Scripts\activate`. The generated image uses
-synthetic identifiers only.
+On Windows, activate the environment with `.venv\Scripts\activate`. The output
+contains synthetic addresses and identifiers only.
 
-## Validate a configuration
+The public project name changed for clarity; the Python distribution and command
+remain `pitft-oob-panel` during the alpha series for compatibility.
+
+## Check a configuration
 
 ```bash
 pitft-oob-panel validate-config config/default.toml
+pitft-oob-panel show-profile
 ```
 
-Configuration does not accept shell snippets. Hardware button locations and
-logical actions come from versioned profiles documented in
-[docs/hardware-profiles.md](docs/hardware-profiles.md).
+Configuration can select reviewed actions, but it cannot contain shell scripts.
+Hardware button positions and logical actions live in versioned
+[hardware profiles](docs/hardware-profiles.md).
 
-## Raspberry Pi status
+## Network safety
 
-The Linux framebuffer and evdev adapters are included, but installation is not
-yet declared production-ready. The packaging files are intentionally a scaffold
-until the dedicated service-account and privileged-broker threat model is
-implemented and hardware-tested on both armhf and arm64.
+The panel observes `cloudflared`; it does not create or authorize a Cloudflare
+Tunnel. An outbound tunnel is still a remote entry point because an authorized
+remote shell can connect from the Raspberry Pi to its attached network.
 
-Read [the architecture](docs/architecture.md), [threat model](docs/threat-model.md),
-and [operations guide](docs/operations.md) before deploying.
+Keep the tunnel stopped while the device is on a home, repair, staging, or other
+temporary network. Before enabling it at the destination, audit every published
+application, private network route, Cloudflare Access policy, and Secure Shell
+key. Follow the [bench network procedure](docs/operations.md#bench-network-safety).
 
-## Development
+## Documentation
+
+- [Architecture](docs/architecture.md) explains the modular design.
+- [Operations guide](docs/operations.md) covers safe setup and troubleshooting.
+- [Hardware profiles](docs/hardware-profiles.md) document physical button mapping.
+- [Threat model](docs/threat-model.md) records trust boundaries and safeguards.
+- [Pre-publication review](docs/pre-publication-review.md) records current evidence
+  and the remaining production gates.
+
+## Contributing and support
+
+Bug reports and feature proposals are welcome in
+[GitHub Issues](https://github.com/ngk0/remote-management-panel/issues).
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before sending a change and report security
+problems through the private process in [SECURITY.md](SECURITY.md).
+
+Local development checks:
 
 ```bash
 python -m pip install -e ".[dev]"
@@ -82,15 +110,13 @@ python -m build
 pip-audit --strict .
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
-The current publication decision and remaining release gates are recorded in
-[the pre-publication review](docs/pre-publication-review.md).
-
 ## Hardware acknowledgement
 
-Adafruit and PiTFT are trademarks of their respective owners. The button
-coordinates in the bundled profile are derived from Adafruit's publicly
-available PiTFT Plus 2.8-inch EagleCAD design. Adafruit hardware design files
+Raspberry Pi is a trademark of Raspberry Pi Ltd. Adafruit and PiTFT are
+trademarks of their respective owners. Remote Management Panel is an independent
+project and is not affiliated with or endorsed by Raspberry Pi Ltd, Adafruit
+Industries, or Cloudflare. The bundled button coordinates are derived from
+Adafruit's public PiTFT Plus 2.8-inch circuit-board design; those design files
 are not redistributed here.
 
 ## License

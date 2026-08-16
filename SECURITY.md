@@ -29,14 +29,15 @@ account and a broker that accepts only reviewed action identifiers.
 
 ## Tunnel and attached-network boundary
 
-An SSH-only tunnel is not a layer-2 bridge, but it still places a remotely
-reachable shell on the LAN to which the appliance is attached. Disabling IP
-forwarding does not prevent an authenticated shell from initiating connections
-to that LAN.
+An SSH-only tunnel is not a direct network bridge, but it still places a remotely
+reachable shell on the local network to which the appliance is attached.
+Disabling IP forwarding does not prevent an authenticated shell from initiating
+connections to that network.
 
 Keep tunnels disabled on bench and temporary networks. Before site activation,
-verify that only intended loopback services are published, private-network/WARP
-routing is disabled unless explicitly required, no unintended CIDR route points
-at the appliance, and Access plus SSH authorization follows least privilege.
-Overlapping private address ranges require deliberate routing isolation; never
-assume identical RFC 1918 addresses refer to the intended site.
+verify that only intended loopback services are published, Cloudflare WARP and
+private-network routing are disabled unless explicitly required, no unintended
+network route points at the appliance, and Cloudflare Access plus SSH
+authorization follows least privilege. Overlapping private address ranges
+require deliberate routing isolation; never assume identical private addresses
+refer to the intended site.

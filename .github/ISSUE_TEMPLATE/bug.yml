@@ -16,7 +16,7 @@ body:
     id: environment
     attributes:
       label: Environment
-      options: [Simulator, Raspberry Pi armhf, Raspberry Pi arm64, Other Linux]
+      options: [Simulator, Raspberry Pi 32-bit, Raspberry Pi 64-bit, Other Linux]
     validations:
       required: true
   - type: input

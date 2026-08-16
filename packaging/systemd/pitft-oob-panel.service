@@ -1,5 +1,5 @@
 [Unit]
-Description=PiTFT out-of-band status panel
+Description=Remote Management Panel for Raspberry Pi
 After=local-fs.target con2fbmap.service NetworkManager.service
 Wants=NetworkManager.service
 ConditionPathExists=/dev/fb0
