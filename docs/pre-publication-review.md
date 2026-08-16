@@ -12,6 +12,14 @@ No deployment token, SSH key, real hostname, site address, SSID, journal,
 framebuffer capture, or provider configuration belongs in this repository.
 Provisioning and live-appliance hardening remain separate projects.
 
+## Publication status
+
+The alpha source was pushed to the public canonical repository on 2026-08-16.
+Its first Python 3.11/3.14 CI, CodeQL, and full-history secret-scan runs passed.
+Main-branch protection requires those checks, private vulnerability reporting
+and push protection are enabled, and the initial source remains a draft pull
+request pending maintainer acceptance.
+
 ## Reviewed in this tree
 
 - Core/UI/Linux/simulation boundaries and background status collection.
@@ -55,11 +63,11 @@ This is partial release evidence, not a production qualification. The live
 
 ## Repository-owner activation checklist
 
-1. Create a new empty public repository; do not import provisioning history.
-2. Enable private vulnerability reporting, secret scanning/push protection,
+1. [x] Create a new empty public repository; do not import provisioning history.
+2. [x] Enable private vulnerability reporting, secret scanning/push protection,
    Dependabot, CodeQL, and branch protection with required CI checks.
-3. Push this curated tree and require the first CI/secret-scan run to pass.
-4. Add canonical project URLs to package metadata only after the repository URL
-   is final.
-5. Do not upload the local `dist/`, virtual environment, caches, captures, or
-   any file from a live appliance.
+3. [x] Push this curated tree and require the first CI/secret-scan run to pass.
+4. [x] Add canonical project URLs to package metadata only after the repository
+   URL is final.
+5. [x] Do not upload the local `dist/`, virtual environment, caches, captures,
+   or any file from a live appliance.

@@ -21,6 +21,12 @@ classifiers = [
 ]
 dependencies = ["Pillow>=9.2"]
 
+[project.urls]
+Homepage = "https://github.com/ngk0/pitft-oob-panel"
+Documentation = "https://github.com/ngk0/pitft-oob-panel/tree/main/docs"
+Issues = "https://github.com/ngk0/pitft-oob-panel/issues"
+Source = "https://github.com/ngk0/pitft-oob-panel"
+
 [project.optional-dependencies]
 hardware = ["evdev>=1.6; platform_system == 'Linux'"]
 dev = [
