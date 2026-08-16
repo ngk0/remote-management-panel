@@ -1,16 +1,17 @@
-# Remote Management Panel
+# RPi Tunnel Panel
 
-[![Continuous integration](https://github.com/ngk0/remote-management-panel/actions/workflows/ci.yml/badge.svg)](https://github.com/ngk0/remote-management-panel/actions/workflows/ci.yml)
-[![Security analysis](https://github.com/ngk0/remote-management-panel/actions/workflows/codeql.yml/badge.svg)](https://github.com/ngk0/remote-management-panel/actions/workflows/codeql.yml)
+[![Continuous integration](https://github.com/ngk0/rpi-tunnel-panel/actions/workflows/ci.yml/badge.svg)](https://github.com/ngk0/rpi-tunnel-panel/actions/workflows/ci.yml)
+[![Security analysis](https://github.com/ngk0/rpi-tunnel-panel/actions/workflows/codeql.yml/badge.svg)](https://github.com/ngk0/rpi-tunnel-panel/actions/workflows/codeql.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 [![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](CHANGELOG.md)
 
-Turn a Raspberry Pi and an Adafruit PiTFT into an always-visible dashboard for
-remote infrastructure. Check the network, Cloudflare Tunnel, system health, and
-local services at a glance, then navigate with the touchscreen or four physical
+RPi Tunnel Panel turns a Raspberry Pi and an Adafruit PiTFT into an
+always-visible dashboard for use with Cloudflare® Tunnel™ and remote
+infrastructure. Check tunnel connections, networking, system health, and local
+services at a glance, then navigate with the touchscreen or four physical
 buttons.
 
-![Remote Management Panel simulator preview](docs/assets/simulator-home.svg)
+![RPi Tunnel Panel simulator preview](docs/assets/simulator-home.svg)
 
 Remote management is also known as **out-of-band** or **lights-out management**:
 it gives operators an independent way to understand and recover equipment when
@@ -57,7 +58,7 @@ pitft-oob-panel simulate --output panel.png
 On Windows, activate the environment with `.venv\Scripts\activate`. The output
 contains synthetic addresses and identifiers only.
 
-The public project name changed for clarity; the Python distribution and command
+The public project name is RPi Tunnel Panel. The Python distribution and command
 remain `pitft-oob-panel` during the alpha series for compatibility.
 
 ## Check a configuration
@@ -94,7 +95,7 @@ key. Follow the [bench network procedure](docs/operations.md#bench-network-safet
 ## Contributing and support
 
 Bug reports and feature proposals are welcome in
-[GitHub Issues](https://github.com/ngk0/remote-management-panel/issues).
+[GitHub Issues](https://github.com/ngk0/rpi-tunnel-panel/issues).
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before sending a change and report security
 problems through the private process in [SECURITY.md](SECURITY.md).
 
@@ -112,12 +113,14 @@ pip-audit --strict .
 
 ## Hardware acknowledgement
 
-Raspberry Pi is a trademark of Raspberry Pi Ltd. Adafruit and PiTFT are
-trademarks of their respective owners. Remote Management Panel is an independent
-project and is not affiliated with or endorsed by Raspberry Pi Ltd, Adafruit
-Industries, or Cloudflare. The bundled button coordinates are derived from
-Adafruit's public PiTFT Plus 2.8-inch circuit-board design; those design files
-are not redistributed here.
+Raspberry Pi is a trademark of Raspberry Pi Ltd. Cloudflare and Cloudflare
+Tunnel are trademarks and/or registered trademarks of Cloudflare, Inc. in the
+United States and other jurisdictions. Adafruit and PiTFT are trademarks of
+their respective owners. RPi Tunnel Panel is an independent project and is not
+affiliated with or endorsed by Raspberry Pi Ltd, Cloudflare, Inc., or Adafruit
+Industries. The bundled button coordinates are derived from Adafruit's public
+PiTFT Plus 2.8-inch circuit-board design; those design files are not
+redistributed here.
 
 ## License
 

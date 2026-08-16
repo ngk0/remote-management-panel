@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping improve Remote Management Panel.
+Thank you for helping improve RPi Tunnel Panel.
 
 ## Before opening a change
 

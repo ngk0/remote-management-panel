@@ -4,6 +4,11 @@ All notable changes are documented here. The project follows Semantic Versioning
 
 ## Unreleased
 
+### Changed
+
+- Renamed the public project to RPi Tunnel Panel and clarified that it is an
+  independent dashboard for use with Cloudflare Tunnel.
+
 ### Added
 
 - Clear public name, search-friendly project summary, and plain-language

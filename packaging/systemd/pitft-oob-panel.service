@@ -1,5 +1,5 @@
 [Unit]
-Description=Remote Management Panel for Raspberry Pi
+Description=RPi Tunnel Panel service
 After=local-fs.target con2fbmap.service NetworkManager.service
 Wants=NetworkManager.service
 ConditionPathExists=/dev/fb0

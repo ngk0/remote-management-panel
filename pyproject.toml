@@ -5,12 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "pitft-oob-panel"
 version = "0.1.0a1"
-description = "A touchscreen dashboard for Raspberry Pi remote management appliances"
+description = "A touchscreen dashboard for use with Cloudflare Tunnel on Raspberry Pi"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-authors = [{ name = "Remote Management Panel contributors" }]
+authors = [{ name = "RPi Tunnel Panel contributors" }]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console :: Framebuffer",
@@ -22,10 +22,10 @@ classifiers = [
 dependencies = ["Pillow>=9.2"]
 
 [project.urls]
-Homepage = "https://github.com/ngk0/remote-management-panel"
-Documentation = "https://github.com/ngk0/remote-management-panel/tree/main/docs"
-Issues = "https://github.com/ngk0/remote-management-panel/issues"
-Source = "https://github.com/ngk0/remote-management-panel"
+Homepage = "https://github.com/ngk0/rpi-tunnel-panel"
+Documentation = "https://github.com/ngk0/rpi-tunnel-panel/tree/main/docs"
+Issues = "https://github.com/ngk0/rpi-tunnel-panel/issues"
+Source = "https://github.com/ngk0/rpi-tunnel-panel"
 
 [project.optional-dependencies]
 hardware = ["evdev>=1.6; platform_system == 'Linux'"]
