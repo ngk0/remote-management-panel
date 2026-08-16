@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 320 240" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic Remote Management Panel home screen</title>
+  <desc id="desc">A black 320 by 240 panel with four left-aligned hardware button labels and synthetic status rows.</desc>
+  <rect width="320" height="240" fill="#000000"/>
+  <rect x="0" y="0" width="62" height="240" fill="#000000"/>
+  <line x1="61" y1="0" x2="61" y2="240" stroke="#29373a"/>
+  <g font-family="DejaVu Sans, sans-serif" font-size="9" font-weight="bold" fill="#eff7f8" text-anchor="middle">
+    <text x="27" y="11">SELECT</text>
+    <text x="27" y="74">DOWN</text>
+    <text x="27" y="134">UP</text>
+    <text x="27" y="197">BACK</text>
+  </g>
+  <g stroke="#62d2e3" stroke-width="2">
+    <line x1="55" y1="8" x2="61" y2="8"/>
+    <line x1="55" y1="71" x2="61" y2="71"/>
+    <line x1="55" y1="131" x2="61" y2="131"/>
+    <line x1="55" y1="194" x2="61" y2="194"/>
+  </g>
+  <rect x="64" y="0" width="256" height="33" fill="#081014"/>
+  <text x="72" y="23" fill="#eff7f8" font-family="DejaVu Sans, sans-serif" font-size="20" font-weight="bold">Remote Panel</text>
+  <text x="309" y="20" fill="#97aeb5" font-family="DejaVu Sans, sans-serif" font-size="13" text-anchor="end">12:34</text>
+  <rect x="64" y="33" width="256" height="51" fill="#163e47"/>
+  <rect x="64" y="33" width="5" height="51" fill="#62d2e3"/>
+  <g font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="bold" fill="#eff7f8">
+    <text x="73" y="65">Cloudflare</text>
+    <text x="73" y="116">Network</text>
+    <text x="73" y="168">System</text>
+    <text x="73" y="219">Open menu</text>
+  </g>
+  <g font-family="DejaVu Sans, sans-serif" font-size="13" text-anchor="end">
+    <text x="312" y="64" fill="#eff7f8">ACTIVE · 4</text>
+    <text x="312" y="115" fill="#63e5a2">WIRED primary</text>
+    <text x="312" y="167" fill="#63e5a2">42.0°C · disk 67%</text>
+    <text x="312" y="218" fill="#63e5a2">&gt;</text>
+  </g>
+  <g stroke="#29373a">
+    <line x1="64" y1="84" x2="320" y2="84"/>
+    <line x1="64" y1="135" x2="320" y2="135"/>
+    <line x1="64" y1="187" x2="320" y2="187"/>
+    <line x1="64" y1="239" x2="320" y2="239"/>
+  </g>
+</svg>

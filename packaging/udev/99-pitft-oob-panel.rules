@@ -1,0 +1,12 @@
+# Grant the locked service account only the reviewed PiTFT framebuffer, touch
+# controller, and named gpio-key devices. Do not grant the broad video/input groups.
+# The filename sorts after Raspberry Pi OS's 99-com.rules, whose generic input
+# rule would otherwise restore GROUP="input" after these narrow matches.
+SUBSYSTEM=="graphics", KERNEL=="fb[0-9]*", ATTR{name}=="fb_ili9340", GROUP="pitft-oob", MODE="0660", SYMLINK+="pitft-oob/fb"
+SUBSYSTEM=="graphics", KERNEL=="fb[0-9]*", ATTR{name}=="*ili9341*", GROUP="pitft-oob", MODE="0660", SYMLINK+="pitft-oob/fb"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="stmpe-ts", GROUP="pitft-oob", MODE="0660", SYMLINK+="input/touchscreen"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="pitft-*", GROUP="pitft-oob", MODE="0660"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="button@11", GROUP="pitft-oob", MODE="0660"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="button@16", GROUP="pitft-oob", MODE="0660"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="button@17", GROUP="pitft-oob", MODE="0660"
+SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="button@1b", GROUP="pitft-oob", MODE="0660"

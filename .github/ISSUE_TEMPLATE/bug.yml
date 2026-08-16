@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a reproducible defect without exposing deployment data
+title: "[bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach tokens, keys, SSIDs, addresses, hostnames, raw journals, or real captures.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+    validations:
+      required: true
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options: [Simulator, Raspberry Pi 32-bit, Raspberry Pi 64-bit, Other Linux]
+    validations:
+      required: true
+  - type: input
+    id: profile
+    attributes:
+      label: Hardware profile
+      placeholder: adafruit-pitft-plus-28r-rotation-270
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and sanitized reproduction
+    validations:
+      required: true
