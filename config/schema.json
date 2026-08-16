@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pitft-oob-panel:config-schema:v1",
+  "title": "PiTFT OOB Panel configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "hardware_profile", "ui", "providers", "actions"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "hardware_profile": {
+      "enum": ["adafruit-pitft-plus-28r-rotation-270"]
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["theme", "font_size", "refresh_seconds", "clock_redraw_seconds"],
+      "properties": {
+        "theme": { "const": "black" },
+        "font_size": { "enum": ["large", "extra-large"] },
+        "refresh_seconds": { "type": "number", "minimum": 1, "maximum": 300 },
+        "clock_redraw_seconds": { "type": "number", "minimum": 1, "maximum": 60 }
+      }
+    },
+    "providers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": {
+          "type": "array",
+          "items": {
+            "enum": ["network", "cloudflared", "system", "services"]
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "destructive_hold_seconds"],
+      "properties": {
+        "enabled": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "cloudflared-restart",
+              "wifi-reconnect",
+              "dhcp-renew",
+              "reboot",
+              "poweroff"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "destructive_hold_seconds": { "type": "number", "minimum": 1, "maximum": 10 }
+      }
+    }
+  }
+}

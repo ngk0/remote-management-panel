@@ -1,0 +1,16 @@
+schema_version = 1
+hardware_profile = "adafruit-pitft-plus-28r-rotation-270"
+
+[ui]
+theme = "black"
+font_size = "large"
+refresh_seconds = 5.0
+clock_redraw_seconds = 10.0
+
+[providers]
+enabled = ["network", "cloudflared", "system", "services"]
+
+[actions]
+# Privileged controls are deliberately disabled in the alpha packaging.
+enabled = []
+destructive_hold_seconds = 2.0

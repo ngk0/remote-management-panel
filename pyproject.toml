@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pitft-oob-panel"
+version = "0.1.0a1"
+description = "A local-first PiTFT status and control panel for Raspberry Pi out-of-band appliances"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "PiTFT OOB Panel contributors" }]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console :: Framebuffer",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: System :: Monitoring",
+]
+dependencies = ["Pillow>=9.2"]
+
+[project.optional-dependencies]
+hardware = ["evdev>=1.6; platform_system == 'Linux'"]
+dev = [
+  "build>=1.2",
+  "mypy>=1.10",
+  "pip-audit>=2.7",
+  "pytest>=8",
+  "pytest-cov>=5",
+  "ruff>=0.6",
+  "types-Pillow>=10",
+]
+
+[project.scripts]
+pitft-oob-panel = "pitft_oob.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pitft_oob"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["pitft_oob"]
+
+[[tool.mypy.overrides]]
+module = "evdev"
+ignore_missing_imports = true
