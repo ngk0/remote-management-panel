@@ -1,4 +1,4 @@
-"""Remote Management Panel public package."""
+"""RPi Tunnel Panel public package."""
 
 from pitft_oob.models import Health, Observation, Snapshot
 

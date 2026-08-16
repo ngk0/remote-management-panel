@@ -14,7 +14,7 @@ class ControllerTests(unittest.TestCase):
         self.controller.set_snapshot(Snapshot(synthetic_observations(now), now))
 
     def test_buttons_navigate_without_rendering_or_hardware(self) -> None:
-        self.assertEqual("Remote Panel", self.controller.view().title)
+        self.assertEqual("RPi Tunnel", self.controller.view().title)
         self.controller.handle_action(ButtonAction.DOWN)
         self.assertEqual(1, self.controller.selected)
         self.controller.handle_action(ButtonAction.SELECT)

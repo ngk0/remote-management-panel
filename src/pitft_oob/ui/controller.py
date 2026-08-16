@@ -87,7 +87,7 @@ class PanelController:
         return page_start, rows[page_start : page_start + self.PAGE_SIZE]
 
     def view(self, now: datetime | None = None) -> PanelView:
-        title = "Remote Panel" if self.screen == "home" else self.screen.title()
+        title = "RPi Tunnel" if self.screen == "home" else self.screen.title()
         labels = tuple(
             RailLabelView(slot.action, slot.label, slot.center_y) for slot in self.layout.rail_slots
         )
